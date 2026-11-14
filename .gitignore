@@ -1,0 +1,8 @@
+node_modules/
+.env
+.DS_Store
+*.log
+coverage/
+src/db/pageturn.sqlite
+src/db/pageturn.sqlite-shm
+src/db/pageturn.sqlite-wal

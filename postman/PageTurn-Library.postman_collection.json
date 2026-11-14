@@ -1,0 +1,176 @@
+{
+  "info": {
+    "name": "PageTurn Library API",
+    "_postman_id": "c3d6a2b1-7a9d-4d65-ae13-2f6d6b4c1010",
+    "description": "API tests for the PageTurn Library Backend Development assignment.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Books",
+      "item": [
+        {
+          "name": "Get all books",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/books"
+          }
+        },
+        {
+          "name": "Get one book",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/books/1"
+          }
+        },
+        {
+          "name": "Add book",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"Deep Work\",\"genre\":\"Self-help\",\"author\":\"Cal Newport\"}"
+            },
+            "url": "{{baseUrl}}/books"
+          }
+        },
+        {
+          "name": "Update book",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"Deep Work Updated\",\"genre\":\"Productivity\",\"author\":\"Cal Newport\"}"
+            },
+            "url": "{{baseUrl}}/books/1"
+          }
+        },
+        {
+          "name": "Delete book",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/books/1"
+          }
+        },
+        {
+          "name": "Search by genre",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/books?genre=Fiction"
+          }
+        },
+        {
+          "name": "Sort A to Z",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/books?sort=name&order=asc"
+          }
+        },
+        {
+          "name": "Sort Z to A",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/books?sort=name&order=desc"
+          }
+        },
+        {
+          "name": "Invalid sort field - expected 400",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/books?sort=colour"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Readers",
+      "item": [
+        {
+          "name": "Get all readers",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/readers"
+          }
+        },
+        {
+          "name": "Get one reader",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/readers/1"
+          }
+        },
+        {
+          "name": "Add reader",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"Meera Rao\",\"email\":\"meera@example.com\"}"
+            },
+            "url": "{{baseUrl}}/readers"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Loans",
+      "item": [
+        {
+          "name": "Get loans with reader and book names",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/loans"
+          }
+        },
+        {
+          "name": "Create loan",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"reader_id\":1,\"book_id\":1}"
+            },
+            "url": "{{baseUrl}}/loans"
+          }
+        },
+        {
+          "name": "Return loan",
+          "request": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/loans/1/return"
+          }
+        }
+      ]
+    }
+  ]
+}
